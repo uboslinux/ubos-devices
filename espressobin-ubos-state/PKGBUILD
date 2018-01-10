@@ -1,7 +1,7 @@
 pkgname=$(basename $(pwd))
 pkgver=0.2
 pkgrel=1
-pkgdesc="EspressoBIN LED control"
+pkgdesc="ESPRESSObin LED control"
 url="http://ubos.net/"
 arch=('aarch64')
 license=('GPL')
