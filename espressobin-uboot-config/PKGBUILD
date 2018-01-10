@@ -1,6 +1,6 @@
 pkgname=$(basename $(pwd))
-pkgver=0.7
-pkgrel=2
+pkgver=0.8
+pkgrel=1
 pkgdesc="EspressoBIN uBoot parameters for UBOS"
 url="http://ubos.net/"
 arch=('aarch64')
