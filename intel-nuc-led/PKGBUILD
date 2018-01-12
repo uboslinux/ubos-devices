@@ -1,27 +1,28 @@
-# Forked from https://github.com/milesp20/intel_nuc_led, with thanks 
+developer="https://github.com/milesp20/"
+url="https://github.com/milesp20/intel_nuc_led"
+maintainer="http://indiecomputing.com/"
 pkgname=$(basename $(pwd))
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='Intel NUC7i[x]BN and NUC6CAY LED Control for Linux '
 arch=('x86_64')
-license=('GPLv3')
+license=('GPL3')
 depends=('linux>=4.14' 'linux<4.15')
 makedepends=('linux-headers>=4.14' 'linux-headers<4.15')
 _extramodules=extramodules-4.14-ARCH
 source=(
-    nuc_led.c
-    Makefile
+    "origin::git+https://github.com/milesp20/intel_nuc_led.git#branch=master"
 )
-sha512sums=('a39f34ac90061079d713210a254b02c9650214aa348b9fe1b42d2aa2adba04d6f9a56550b0b6d9ad10830fabc75ede0869ce550a4e4b0c785482bf054569f4ca'
-            'e7db54cce672462a1f790e19b421da328cfbc0e3b758576ae32e3ea8d25f101bf1b2c7902c5eb7cca6f5a2368e7b3b50c1b2fc098de2b51cfe876350062ace83')
+sha512sums=('SKIP')
 
 build() {
-  make KVERSION="$(cat /usr/lib/modules/${_extramodules}/version)"
+    cd origin
+    make KVERSION="$(cat /usr/lib/modules/${_extramodules}/version)"
 }
 
 package() {
-  install -Dt "${pkgdir}/usr/lib/modules/${_extramodules}" -m644 nuc_led.ko
-  find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
+    install -m644 origin/nuc_led.ko -Dt "${pkgdir}/usr/lib/modules/${_extramodules}"
+    find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
-  echo nuc_led | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/nuc_led.conf"
+    echo nuc_led | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/nuc_led.conf"
 }

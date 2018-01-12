@@ -1,11 +1,14 @@
+developer="http://indiecomputing.com/"
+url="http://ubos.net/"
+maintainer=${developer}
 pkgname=$(basename $(pwd))
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Intel NUC LED control"
 url="http://ubos.net/"
 arch=('x86_64')
 depends=('intel-nuc-led')
-license=('GPL')
+license=('AGPL3')
 options=('!strip')
 
 _vendor_perl=$(perl -V::vendorarch: | sed -e "s![' ]!!g")
