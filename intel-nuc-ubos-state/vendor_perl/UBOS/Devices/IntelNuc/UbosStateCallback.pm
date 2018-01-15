@@ -21,7 +21,7 @@ sub stateChanged {
 
     my $nucLedValue = undef;
     if( 'BootingOrShuttingDown' eq $newState ) {
-        $nucLedValue = 'ring,80,fade_slow,green';
+        $nucLedValue = 'ring,0,none,green';
     } elsif( 'Operational' eq $newState ) {
         $nucLedValue = 'ring,80,none,blue';
     } elsif( 'InMaintenance' eq $newState ) {
