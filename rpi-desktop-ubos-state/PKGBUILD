@@ -1,0 +1,25 @@
+developer="http://indiecomputing.com/"
+url="http://ubos.net/"
+maintainer=${developer}
+pkgname=$(basename $(pwd))
+pkgver=0.1
+pkgrel=1
+pkgdesc="Raspberry Pi Desktop LED control"
+url="http://ubos.net/"
+arch=('armv6h' 'arvm7h')
+license=('AGPLv3')
+depends=('wiringpi' 'python-raspberrypi-gpio')
+options=('!strip')
+_vendor_perl=$(perl -V::vendorarch: | sed -e "s![' ]!!g")
+
+package() {
+# Callbacks
+    install -d -m644 ${startdir}/etc/ubos/state-callbacks/ubos-state-rpi-desktop -t ${pkgdir}/etc/ubos/state-callbacks/
+
+# Systemd
+    install -d -m644 ${startdir}/systemd/*.service -t ${pkgdir}/usr/lib/systemd/system/
+
+# Code
+    install -d -m755 ${startdir}/bin/* -t ${pkgdir}/usr/share/${pkgname}/bin/
+    install -d -m644 ${startdir}/vendor_perl/UBOS/Devices/RpiDesktop/* -t ${pkgdir}${_vendor_perl}/UBOS/Devices/RpiDesktop/
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitors Pi Desktop power button
+After=local-fs.target
+
+[Service]
+Type=simple
+ExecStart=/usr/share/rpi-desktop-ubos-state/bin/monitor-powerkey
+
+[Install]
+WantedBy=multi-user.target

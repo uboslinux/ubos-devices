@@ -25,6 +25,7 @@ my @ledPins = ( $bluePin, $redPin, $greenPin );
 ##
 # Callback
 # $newState: the new state
+# return: number of errors
 sub stateChanged {
     my $newState = shift;
 
@@ -44,6 +45,8 @@ sub stateChanged {
         }
     }
     UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $fanPin, 1 );
+
+    return 0;
 }
 
 1;

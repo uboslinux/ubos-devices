@@ -16,6 +16,7 @@ use UBOS::Utils;
 ##
 # Callback
 # $newState: the new state
+# return: number of errors
 sub stateChanged {
     my $newState = shift;
 
@@ -33,6 +34,7 @@ sub stateChanged {
     if( $nucLedValue ) {
         UBOS::Utils::saveFile( '/proc/acpi/nuc_led', "$nucLedValue\n" );
     }
+    return 0;
 }
 
 1;
