@@ -29,21 +29,30 @@ my @ledPins = ( $bluePin, $redPin, $greenPin );
 sub stateChanged {
     my $newState = shift;
 
-    my $onPin = -1;
     if( 'BootingOrShuttingDown' eq $newState ) {
-        $onPin = $greenPin;
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $bluePin,  0 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $redPin,   0 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $greenPin, 1 );
+
     } elsif( 'Operational' eq $newState ) {
-        $onPin = $bluePin;
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $bluePin,  1 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $redPin,   0 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $greenPin, 0 );
+
+    } elsif( 'Error' eq $newState ) {
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $bluePin,  0 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $redPin,   1 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $greenPin, 0 );
+
     } elsif( 'InMaintenance' eq $newState ) {
-        $onPin = $redPin;
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $bluePin,  0 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $redPin,   1 );
+        UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $greenPin, 1 );
+
     } else {
         error( 'Unknown new state:', $newState );
     }
-    if( $onPin >= 0 ) {
-        foreach my $pin ( @ledPins ) {
-            UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $pin, $pin == $onPin );
-        }
-    }
+
     UBOS::Devices::ESPRESSObin::Gpio::setOutputPin( $fanPin, 1 );
 
     return 0;

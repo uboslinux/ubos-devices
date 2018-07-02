@@ -22,11 +22,13 @@ sub stateChanged {
 
     my $nucLedValue = undef;
     if( 'BootingOrShuttingDown' eq $newState ) {
-        $nucLedValue = 'ring,0,none,green';
+        $nucLedValue = 'ring,0,none,green'; # cannot be stopped when poweroff, nor started when boot starts
     } elsif( 'Operational' eq $newState ) {
         $nucLedValue = 'ring,80,none,blue';
     } elsif( 'InMaintenance' eq $newState ) {
-        $nucLedValue = 'ring,80,fade_slow,red';
+        $nucLedValue = 'ring,80,fade_slow,yellow';
+    } elsif( 'Error' eq $newState ) {
+        $nucLedValue = 'ring,80,none,red';
     } else {
         error( 'Unknown new state:', $newState );
     }
