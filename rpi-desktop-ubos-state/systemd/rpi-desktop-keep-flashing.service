@@ -1,0 +1,7 @@
+[Unit]
+Description=Flashes the LED on the Desktop Pi without triggering poweroff
+
+[Service]
+Type=simple
+ExecStart=/usr/share/rpi-desktop-ubos-state/bin/keep-flashing
+ExecStop=/usr/share/rpi-desktop-ubos-state/bin/stop-flashing

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Monitor the power key. When pressed, cleanly shut down the system,
+# Stop the LED flashing
 #
 # Copyright (C) 2017 and later, Shanks Xie, from https://github.com/pi-desktop/deb-make
 # Copyright (C) 2017 and later, https://github.com/hoopsurfer, from https://github.com/hoopsurfer/pidesktop
@@ -16,14 +16,3 @@ GPIO.setup(31,GPIO.OUT)  # Pi to PCU - start/stop shutdown timer
 GPIO.setup(33,GPIO.IN)   # PCU to Pi - detect power key pressed
 
 GPIO.output(31,GPIO.LOW)
- 
-def powerkey_pressed(channels):
-    os.system("sync")
-    time.sleep( 1 )
-    os.system("systemctl poweroff") # UBOS needs systemd instead
-    sys.exit()
-
-GPIO.add_event_detect(33,GPIO.RISING,callback=powerkey_pressed)
-
-while True:
-    time.sleep(100)

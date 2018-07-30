@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+#
+# Invoked when the system starts up.
+#
+# Copyright (C) 2018 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
+
+use strict;
+use warnings;
+
+use UBOS::Utils;
+
+UBOS::Logging::initialize( 'rpi-desktop-ubos-state', 'load-from-rtc', 0, '/etc/ubos/log-system.conf' );
+
+# Set current time from hardware clock
+UBOS::Utils::myexec( '/sbin/hwclock --hctosys' );
+
+1;

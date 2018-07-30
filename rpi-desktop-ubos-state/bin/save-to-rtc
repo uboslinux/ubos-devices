@@ -10,10 +10,9 @@ use warnings;
 
 use UBOS::Utils;
 
-UBOS::Logging::initialize( 'rpi-desktop-ubos-state', 'shutdown', 0, '/etc/ubos/log-system.conf' );
+UBOS::Logging::initialize( 'rpi-desktop-ubos-state', 'save-to-rtc', 0, '/etc/ubos/log-system.conf' );
 
 # Save current time in hardware clock
 UBOS::Utils::myexec( '/sbin/hwclock --systohc' );
-
 
 1;

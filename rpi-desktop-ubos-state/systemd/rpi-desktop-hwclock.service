@@ -1,0 +1,10 @@
+[Unit]
+Description=Loads and saves Desktop Pi real-time clock times
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/rpi-desktop-ubos-state/bin/load-from-rtc
+ExecStop=/usr/share/rpi-desktop-ubos-state/bin/save-to-rtc
+
+[Install]
+WantedBy=ubos-ready.target
