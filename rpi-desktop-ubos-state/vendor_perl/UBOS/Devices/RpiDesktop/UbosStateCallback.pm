@@ -10,7 +10,7 @@ use warnings;
 
 package UBOS::Devices::RpiDesktop::UbosStateCallback;
 
-use UBOS::Devices::RpiDesktop::PinAssignments;
+my $statusLedPin = 22;
 
 ##
 # Callback
@@ -24,7 +24,7 @@ sub stateChanged {
         $flag = 1;
     }
 
-    UBOS::Utils::myexec( 'gpio write ' . $UBOS::Devices::RpiDesktop::PinAssignments::statusLedPin . ' ' . $flag );
+    UBOS::Utils::myexec( 'gpio write ' . $statusLedPin . ' ' . $flag );
 
     return 0;
 }
