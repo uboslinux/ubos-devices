@@ -1,0 +1,18 @@
+#!/usr/bin/python
+#
+# Start the LED flashing and the poweroff countdown
+#
+# Copyright (C) 2017 and later, Shanks Xie, from https://github.com/pi-desktop/deb-make
+# Copyright (C) 2017 and later, https://github.com/hoopsurfer, from https://github.com/hoopsurfer/pidesktop
+# Copyright (C) 2018 and later, Indie Computing Corp. All rights reserved. License: see package.
+#
+
+import RPi.GPIO as GPIO
+import time,os,sys
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(31,GPIO.OUT)  # Pi to PCU - start/stop shutdown timer
+GPIO.setup(33,GPIO.IN)   # PCU to Pi - detect power key pressed
+
+GPIO.output(31,GPIO.HIGH)
