@@ -21,12 +21,14 @@ sub stateChanged {
     my $newState = shift;
 
     my $nucLedValue = undef;
-    if( 'BootingOrShuttingDown' eq $newState ) {
-        $nucLedValue = 'ring,0,none,green'; # cannot be stopped when poweroff, nor started when boot starts
-    } elsif( 'Operational' eq $newState ) {
+    if( 'Operational' eq $newState ) {
         $nucLedValue = 'ring,80,none,blue';
     } elsif( 'InMaintenance' eq $newState ) {
         $nucLedValue = 'ring,80,fade_slow,yellow';
+    } elsif( 'ShuttingDown' eq $newState ) {
+        $nucLedValue = 'ring,0,none,green'; # cannot be stopped when poweroff, nor started when boot starts
+    } elsif( 'Rebooting' eq $newState ) {
+        $nucLedValue = 'ring,80,fade_slow,green'; # cannot be stopped when poweroff, nor started when boot starts
     } elsif( 'Error' eq $newState ) {
         $nucLedValue = 'ring,80,none,red';
     } else {

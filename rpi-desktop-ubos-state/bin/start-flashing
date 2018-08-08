@@ -1,6 +1,7 @@
 #!/usr/bin/python
 #
-# Keep the LED flashing without triggering a reboot
+# Flash the LED for approx the given number of seconds, or forever if none given,
+# without triggering a reboot
 #
 # Copyright (C) 2017 and later, Shanks Xie, from https://github.com/pi-desktop/deb-make
 # Copyright (C) 2017 and later, https://github.com/hoopsurfer, from https://github.com/hoopsurfer/pidesktop
@@ -10,13 +11,24 @@
 import RPi.GPIO as GPIO
 import time,os,sys
 
+duration = sys.maxsize
+if len( sys.argv ) > 1:
+    duration = int( sys.argv[1])
+
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(31,GPIO.OUT)  # Pi to PCU - start/stop shutdown timer
 GPIO.setup(33,GPIO.IN)   # PCU to Pi - detect power key pressed
 
-while True:
+for i in range( 0, int( duration/10 )+1) :
     GPIO.output(31,GPIO.HIGH)
-    time.sleep(10)
+    remainder = duration - 10 * i + 0.2
+    if remainder > 9:
+        remainder = 9.2
+    if remainder < 1:
+        remainder = 0.2
+    time.sleep(remainder)
     GPIO.output(31,GPIO.LOW)
-    time.sleep(0.5)
+    time.sleep(0.2)
+
+GPIO.output(31,GPIO.LOW)
