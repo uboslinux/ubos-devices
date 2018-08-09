@@ -13,6 +13,8 @@ package UBOS::Devices::IntelNuc::UbosStateCallback;
 use UBOS::Logging;
 use UBOS::Utils;
 
+my $specialFile = '/proc/acpi/nuc_led';
+
 ##
 # Callback
 # $newState: the new state
@@ -36,7 +38,11 @@ sub stateChanged {
     }
 
     if( $nucLedValue ) {
-        UBOS::Utils::saveFile( '/proc/acpi/nuc_led', "$nucLedValue\n" );
+        if( -e $specialFile ) {
+            UBOS::Utils::saveFile( $specialFile, "$nucLedValue\n" );
+        } else {
+            warning( 'Special NUC LED file not found:', $specialFile );
+        }
     }
     return 0;
 }
