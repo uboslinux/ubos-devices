@@ -4,7 +4,7 @@
 
 pkgname="python-raspberry-gpio"
 pkgver="0.6.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Python library for GPIO access on a Raspberry Pi"
 arch=("armv6h" "armv7h" "aarch64")
 url="http://sourceforge.net/projects/raspberry-gpio-python/"
