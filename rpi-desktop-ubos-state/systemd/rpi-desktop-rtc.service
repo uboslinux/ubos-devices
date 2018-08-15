@@ -3,8 +3,8 @@ Description=Loads and saves Desktop Pi real-time clock times
 
 [Service]
 Type=oneshot
+RemainAfterExit=true
 ExecStart=/usr/share/rpi-desktop-ubos-state/bin/load-from-rtc
-ExecStop=/usr/share/rpi-desktop-ubos-state/bin/start-countdown
 ExecStop=/usr/share/rpi-desktop-ubos-state/bin/save-to-rtc
 
 [Install]

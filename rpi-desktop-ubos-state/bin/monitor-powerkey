@@ -16,8 +16,9 @@ GPIO.setup(31,GPIO.OUT)  # Pi to PCU - start/stop shutdown timer
 GPIO.setup(33,GPIO.IN)   # PCU to Pi - detect power key pressed
 
 GPIO.output(31,GPIO.LOW)
- 
+
 def powerkey_pressed(channels):
+    GPIO.output(31,GPIO.HIGH) # provide immediate visual feedback
     os.system("sync")
     time.sleep( 1 )
     os.system("systemctl poweroff") # UBOS needs systemd instead
