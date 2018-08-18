@@ -1,11 +1,17 @@
 [Unit]
 Description=Loads and saves Desktop Pi real-time clock times
+Wants=ubos-admin.service
+After=ubos-admin.service
+Before=ubos-ready.service
 
 [Service]
+ExecStartPre=/usr/share/ubos-admin/bin/ubos-service-prestart rpi-desktop-rtc
+ExecStopPost=/usr/share/ubos-admin/bin/ubos-service-poststop rpi-desktop-rtc
+
 Type=oneshot
-RemainAfterExit=true
+RemainAfterExit=yes
 ExecStart=/usr/share/rpi-desktop-ubos-state/bin/load-from-rtc
 ExecStop=/usr/share/rpi-desktop-ubos-state/bin/save-to-rtc
 
 [Install]
-WantedBy=ubos-ready.target
+WantedBy=multi-user.target
