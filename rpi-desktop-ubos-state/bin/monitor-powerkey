@@ -20,6 +20,7 @@ GPIO.output(31,GPIO.LOW)
 def powerkey_pressed(channels):
     GPIO.output(31,GPIO.HIGH) # provide immediate visual feedback
     os.system("sync")
+    GPIO.output(31,GPIO.LOW)
     time.sleep( 1 )
     os.system("systemctl poweroff") # UBOS needs systemd instead
     sys.exit()
@@ -27,4 +28,4 @@ def powerkey_pressed(channels):
 GPIO.add_event_detect(33,GPIO.RISING,callback=powerkey_pressed)
 
 while True:
-    time.sleep(100)
+    time.sleep(1)
