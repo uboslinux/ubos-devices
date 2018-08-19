@@ -1,12 +1,13 @@
 [Unit]
 Description=Triggers Desktop Pi hardware poweroff
 DefaultDependencies=no
-Before=shutdown.target
+Before=poweroff.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/share/rpi-desktop-ubos-state/bin/start-countdown
+RemainAfterExit=yes
 
 [Install]
-WantedBy=halt.target poweroff.target
+WantedBy=poweroff.target
 
