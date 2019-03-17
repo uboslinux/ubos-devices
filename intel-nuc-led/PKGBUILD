@@ -3,12 +3,12 @@ url="https://github.com/milesp20/intel_nuc_led"
 maintainer="http://indiecomputing.com/"
 pkgname=$(basename $(pwd))
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel NUC7i[x]BN and NUC6CAY LED Control for Linux '
 arch=('x86_64')
 license=('GPL3')
-depends=('linux>=4.20.arch1' 'linux<4.21.arch1')
-makedepends=('linux-headers>=4.20.arch1' 'linux-headers<4.21.arch1')
+depends=('linux>=5.0.2.arch1' 'linux<5.1.arch1')
+makedepends=('linux-headers>=5.0.2.arch1' 'linux-headers<5.1.arch1')
 _extramodules=extramodules-ARCH
 source=(
     "origin::git+https://github.com/milesp20/intel_nuc_led.git#commit=1ee419dd154a8e99007de5e740f8b4c181c903ec"
