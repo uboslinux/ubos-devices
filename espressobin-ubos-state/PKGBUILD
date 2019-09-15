@@ -2,14 +2,14 @@ developer="http://indiecomputing.com/"
 url="http://ubos.net/"
 maintainer=${developer}
 pkgname=$(basename $(pwd))
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="ESPRESSObin LED control"
 url="http://ubos.net/"
 arch=('aarch64')
 license=('AGPL3')
 options=('!strip')
-_vendor_perl=$(perl -V::vendorarch: | sed -e "s![' ]!!g")
+_vendor_perl=/usr/share/perl5/vendor_perl
 
 package() {
     mkdir -p ${pkgdir}/etc/ubos/state-callbacks
