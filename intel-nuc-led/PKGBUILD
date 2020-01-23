@@ -3,13 +3,12 @@ url="https://github.com/milesp20/intel_nuc_led"
 maintainer="http://indiecomputing.com/"
 pkgname=$(basename $(pwd))
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc='Intel NUC7i[x]BN and NUC6CAY LED Control for Linux '
 arch=('x86_64')
 license=('GPL3')
-depends=('linux>=5.3.1.arch1' 'linux<5.4.arch1')
-makedepends=('linux-headers>=5.3.1.arch1' 'linux-headers<5.4.arch1')
-_extramodules=extramodules-ARCH
+depends=('linux>=5.4.1.arch1' 'linux<5.5.arch1')
+makedepends=('linux-headers>=5.4.1.arch1' 'linux-headers<5.5.arch1')
 source=(
     "origin::git+https://github.com/milesp20/intel_nuc_led.git#commit=1ee419dd154a8e99007de5e740f8b4c181c903ec"
 )
@@ -18,11 +17,11 @@ releasepage=(${url})
 
 build() {
     cd origin
-    make KVERSION="$(cat /usr/lib/modules/${_extramodules}/version)" default
+    make KVERSION="$(uname -r)" default
 }
 
 package() {
-    install -m644 origin/nuc_led.ko -Dt "${pkgdir}/usr/lib/modules/${_extramodules}"
+    install -m644 origin/nuc_led.ko -Dt "${pkgdir}/usr/lib/modules/$(uname -r)/extramodules/"
     find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
     echo nuc_led | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/nuc_led.conf"
