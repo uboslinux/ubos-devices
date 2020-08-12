@@ -1,0 +1,14 @@
+#!/bin/bash
+
+msg() {
+    echo "The boot loader files have been updated. You need to install them with a command such as:"
+    echo "cd /boot; ./sd_fusing.sh /dev/sda"
+}
+
+post_install() {
+    msg
+}
+
+post_upgrade() {
+    msg
+}
