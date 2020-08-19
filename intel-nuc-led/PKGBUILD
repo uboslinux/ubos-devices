@@ -4,8 +4,8 @@ developer="https://indiecomputing.com/"
 url="https://github.com/uboslinux/ubos-devices"
 maintainer=${developer}
 pkgname=$(basename $(pwd))
-pkgver=0.y
-pkgrel=10
+pkgver=0.7
+pkgrel=1
 pkgdesc='Intel NUC7i[x]BN and NUC6CAY LED Control for Linux '
 arch=('x86_64')
 license=('GPL3')
@@ -24,12 +24,13 @@ sha512sums=(
 )
 
 build() {
-    cd origin
+    cd ${srcdir}
     make KVERSION="$(uname -r)" default
 }
 
 package() {
-    install -m644 origin/nuc_led.ko -Dt "${pkgdir}/usr/lib/modules/${_kernelpath}/extramodules/"
+    cd ${srcdir}
+    install -m644 nuc_led.ko -Dt "${pkgdir}/usr/lib/modules/${_kernelpath}/extramodules/"
     find "${pkgdir}" -name '*.ko' -exec gzip -n {} +
 
     echo nuc_led | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/nuc_led.conf"
