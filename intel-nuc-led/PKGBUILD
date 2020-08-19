@@ -1,8 +1,10 @@
-developer="https://github.com/milesp20/"
-url="https://github.com/milesp20/intel_nuc_led"
-maintainer="http://indiecomputing.com/"
+# Forked from https://github.com/milesp20/intel_nuc_led/, which is not maintained
+
+developer="https://indiecomputing.com/"
+url="https://github.com/uboslinux/ubos-devices"
+maintainer=${developer}
 pkgname=$(basename $(pwd))
-pkgver=0.6
+pkgver=0.y
 pkgrel=10
 pkgdesc='Intel NUC7i[x]BN and NUC6CAY LED Control for Linux '
 arch=('x86_64')
@@ -13,10 +15,13 @@ _kernelpath=5.8.1-arch1-1
 depends=("linux=${_kernelver}")
 makedepends=("linux-headers=${_kernelver}")
 source=(
-    "origin::git+https://github.com/milesp20/intel_nuc_led.git#commit=1ee419dd154a8e99007de5e740f8b4c181c903ec"
+    "Makefile"
+    "nuc_led.c"
 )
-sha512sums=('SKIP')
-releasepage=(${url})
+sha512sums=(
+    'SKIP'
+    'SKIP'
+)
 
 build() {
     cd origin
