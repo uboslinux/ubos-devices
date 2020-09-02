@@ -37,9 +37,8 @@ sub stateChanged {
             # NUC 10:
             #   hdd: off
             '05 01 04 00 00', # software controlled
-            '06 02 04 00 00', # brightness zero
+            '06 01 04 00 00', # brightness zero
             #   power: power (factory setting)
-
         ];
 
     } elsif( 'InMaintenance' eq $newState ) {
@@ -53,12 +52,11 @@ sub stateChanged {
             # NUC 10:
             #   hdd: white, breathing, 1Hz
             '05 01 04 00 00', # software controlled
-            '06 02 04 00 50', # brightness 80
-            '06 02 04 01 01', # breathing
-            '06 02 04 02 0a', # blinking frequency
-            '06 02 04 03 01', # white
+            '06 01 04 00 50', # brightness 80
+            '06 01 04 01 01', # breathing
+            '06 01 04 02 0a', # blinking frequency
+            '06 01 04 03 01', # white
             #   power: power (factory setting)
-
         ];
 
     } elsif( 'ShuttingDown' eq $newState ) {
@@ -72,9 +70,8 @@ sub stateChanged {
             # NUC 10:
             #   hdd: off
             '05 01 04 00 00', # software controlled
-            '06 02 04 00 00', # brightness zero
+            '06 01 04 00 00', # brightness zero
             #   power: power (factory setting)
-
         ];
 
     } elsif( 'Rebooting' eq $newState ) {
@@ -88,9 +85,8 @@ sub stateChanged {
             # NUC 10:
             #   hdd: off
             '05 01 04 00 00', # software controlled
-            '06 02 04 00 00', # brightness zero
+            '06 01 04 00 00', # brightness zero
             #   power: power (factory setting)
-
         ];
 
     } elsif( 'Error' eq $newState ) {
@@ -104,11 +100,10 @@ sub stateChanged {
             # NUC 10:
             #   hdd: white, solid
             '05 01 04 00 00', # software controlled
-            '06 02 04 00 64', # brightness 100
-            '06 02 04 01 00', # solid
-            '06 02 04 03 01', # white
+            '06 01 04 00 64', # brightness 100
+            '06 01 04 01 00', # solid
+            '06 01 04 03 01', # white
             #   power: power (factory setting)
-
         ];
 
     } else {
