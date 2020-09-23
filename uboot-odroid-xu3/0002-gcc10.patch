@@ -1,0 +1,11 @@
+--- Makefile	2018-01-09 01:25:29.000000000 +0000
++++ Makefile.f-common	2020-09-04 00:50:45.820687339 +0000
+@@ -256,7 +256,7 @@
+ 
+ HOSTCC       = cc
+ HOSTCXX      = c++
+-HOSTCFLAGS   = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer \
++HOSTCFLAGS   = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer -fcommon \
+ 		$(if $(CONFIG_TOOLS_DEBUG),-g)
+ HOSTCXXFLAGS = -O2
+ 

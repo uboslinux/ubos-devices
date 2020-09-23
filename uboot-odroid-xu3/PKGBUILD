@@ -6,7 +6,7 @@ buildarch=4
 
 pkgname=uboot-odroid-xu3
 pkgver=2018.01
-pkgrel=2.2
+pkgrel=2.3
 pkgdesc="U-Boot for ODROID-XU3/XU4/HC1/HC2"
 arch=('armv7h')
 url='http://www.denx.de/wiki/U-Boot/WebHome'
@@ -17,20 +17,22 @@ makedepends=('bc' 'dtc145' 'git')
 _commit=fe2f831fd44a4071f58a42f260164544697aa666
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
         '0001-ARM-Samsung-Add-Exynos5422-based-Odroid-HC1-support.patch'
+        '0002-gcc10.patch'
         "bl1.bin::https://github.com/hardkernel/u-boot/raw/${_commit}/sd_fuse/hardkernel/bl1.bin.hardkernel"
         'http://archlinuxarm.org/builder/src/xu3/bl2.bin'
         "tzsw.bin::https://github.com/hardkernel/u-boot/raw/${_commit}/sd_fuse/hardkernel/tzsw.bin.hardkernel"
         'sd_fusing.sh'
         'boot.txt'
         'mkscr')
-md5sums=('b42e45813369f4ae84490a481e531768'
-         '32190849dbeefab68897ce8ee6e2e033'
-         '38fb058aa3bcc568f9547c85517949b9'
-         '09c42bed980921cfc914e97e067ba9a3'
-         'fd01dda20b999e0b731c7063431a42b3'
-         '8a31acf5da5722698f54d1fe15c482bb'
-         '52306aa4cf2c3499ecfcea026fb2741c'
-         '021623a04afd29ac3f368977140cfbfd')
+sha512sums=('d5be907c2b7c54083ce5ce26d005d356355d2ad4dabcde7432eff8e90a6750dcd7a4b1eeafae52c79187defcf555f9e08b91b0085dc2245e86bc62696b44c5f2'
+            '3c2b8abf9a6dc1fb27c7870ce202f6f43679dcb41d0c682eb932f092f2c62bc49d6058d09e70b36ae970529715da3fff16ed55fb2dfc173a3f9fa64e625ced53'
+            'fb9f8f03ff000f96c8e1ef0d724b99d1975bc49a7f7f138007fbeb3b9ef69d730c9f964e7a24a3679222703f5d987ec2c0604bf62b7a1b6f9b7c6ed9dde37df1'
+            '0291c6959990b14ef8af300256fed73ed911970b2df51ceb5b36d5900ae321d9dbe0cb02a7bf8098d08dd4192b3c582570491255d3f1dc113bce575d5f0260a5'
+            'cc9951cdd8b4e11d244a8b4a3d8d287759b7faddcea462ddb94cc05249afe456bb67791641eeca70580264af044dac92987a8f8309ff10ad2cd9f406cedfd6cb'
+            '434f6b479ead6b5d25877bb615df4281f95d1637d4171354f4bf324f8a1d7df3855e0a696aa204285c3298b45bf7d1e0ad4c27a88bc705f4cff1f082754f444f'
+            '10bdada893d65df6368c68dcaaa938f3a4d38a5e66c0e42dbdcc91de6bad18fd5c76e04e0943e48aaffccb4fac8310a713d63b824934209f4e6faed622a11c47'
+            '3c8bb47743d1ac0500469d186a803f2476c9e7e87f6d1deca781f6745b20253805f42d6cac2d91e2bf46e1faf5342e729adcaaffd81aa02e1d26d6b22fe6aa6a'
+            '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0')
 
 releasepage=('https://archlinuxarm.org/packages/armv7h/uboot-odroid-xu3/log')
 pkgverforked=('2018.01-2')
@@ -39,6 +41,8 @@ prepare() {
   cd u-boot-${pkgver}
 
   patch -p1 -i ../0001-ARM-Samsung-Add-Exynos5422-based-Odroid-HC1-support.patch
+  patch -i ../0002-gcc10.patch
+  # See https://git.yoctoproject.org/cgit/cgit.cgi/meta-arm/diff/meta-arm-bsp/recipes-kernel/linux/linux-linaro-arm-5.4/n1sdp/scripts-dtc-remove-redundant-YYLOC.patch?id=75b337d909e191b20fcac4f1e4dad9737cb47e7e
 }
 
 build() {
