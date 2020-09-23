@@ -35,9 +35,8 @@ sub stateChanged {
             #   power: power (factory setting)
 
             # NUC 10:
-            #   hdd: off
-            '05 01 04 00 00', # software controlled
-            '06 01 04 00 00', # brightness zero
+            #   hdd: hdd activity
+            '05 01 01 00 00', # HDD indicator
             #   power: power (factory setting)
         ];
 
@@ -50,11 +49,11 @@ sub stateChanged {
             #   power: power (factory setting)
 
             # NUC 10:
-            #   hdd: white, breathing, 1Hz
+            #   hdd: white, breathing
             '05 01 04 00 00', # software controlled
-            '06 01 04 00 50', # brightness 80
+            '06 01 04 00 64', # brightness 100
             '06 01 04 01 01', # breathing
-            '06 01 04 02 0a', # blinking frequency
+            '06 01 04 02 05', # blinking frequency (5 * 0.1 Hz)
             '06 01 04 03 01', # white
             #   power: power (factory setting)
         ];
