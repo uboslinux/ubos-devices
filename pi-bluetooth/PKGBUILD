@@ -3,7 +3,7 @@
 # From AUR
 
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pi-bluetooth')
-pkgverforked=('21.2_4-1')
+pkgverforked=('1.2_4-1')
 
 pkgname=pi-bluetooth
 pkgver=1.2_4
