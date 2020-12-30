@@ -1,12 +1,12 @@
 # U-Boot: ODROID XU3/XU4/HC1
 # Maintainer: Kevin Mihelich <kevin@archlinuxarm.org>
-# Modified for UBOS: no user input in install script
+# Modified for UBOS: no user input in install script; permit fusing on disk image
 
 buildarch=4
 
 pkgname=uboot-odroid-xu3
 pkgver=2018.01
-pkgrel=2.3
+pkgrel=2.4
 pkgdesc="U-Boot for ODROID-XU3/XU4/HC1/HC2"
 arch=('armv7h')
 url='http://www.denx.de/wiki/U-Boot/WebHome'
@@ -30,7 +30,7 @@ sha512sums=('d5be907c2b7c54083ce5ce26d005d356355d2ad4dabcde7432eff8e90a6750dcd7a
             '0291c6959990b14ef8af300256fed73ed911970b2df51ceb5b36d5900ae321d9dbe0cb02a7bf8098d08dd4192b3c582570491255d3f1dc113bce575d5f0260a5'
             'cc9951cdd8b4e11d244a8b4a3d8d287759b7faddcea462ddb94cc05249afe456bb67791641eeca70580264af044dac92987a8f8309ff10ad2cd9f406cedfd6cb'
             '434f6b479ead6b5d25877bb615df4281f95d1637d4171354f4bf324f8a1d7df3855e0a696aa204285c3298b45bf7d1e0ad4c27a88bc705f4cff1f082754f444f'
-            '10bdada893d65df6368c68dcaaa938f3a4d38a5e66c0e42dbdcc91de6bad18fd5c76e04e0943e48aaffccb4fac8310a713d63b824934209f4e6faed622a11c47'
+            'e91b311ca4d0621baeef74ba3c9072c7970236117e61c2fd199bacf685038b5d4910db2585ef2597d633134297dd6fc4ec9721c3fa02d0184f8c4b5c03ca45fc'
             '3c8bb47743d1ac0500469d186a803f2476c9e7e87f6d1deca781f6745b20253805f42d6cac2d91e2bf46e1faf5342e729adcaaffd81aa02e1d26d6b22fe6aa6a'
             '7046ab4d88efbba636be049be2f660e18c05e48d161d39437c1580b12795ba4d9197ad57ac4572398f80a38d4777507b57228abf4cc41f0081d196ece27ea9d0')
 
