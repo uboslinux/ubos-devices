@@ -11,7 +11,7 @@
 ####################################
 #
 # Modified for Arch Linux ARM package uboot-odroid-xu3
-# Modified for UBOS so it can be used on disk images, not just block devices
+# Modified for UBOS: exit code
 #
 ####################################
 
@@ -21,14 +21,14 @@ then
     exit 0
 fi
 
-# UBOS
-# if [ -b $1 ]
-# then
-#     echo "$1 reader is identified."
-# else
-#     echo "$1 is NOT identified."
-#     exit 0
-# fi
+if [ -b $1 ]
+then
+    echo "$1 reader is identified."
+else
+    echo "$1 is NOT identified."
+    # UBOS
+    exit 1
+fi
 
 if [ -d /sys/block/${1##*/}boot0 ]; then
     echo "$1 is an eMMC card, disabling ${1##*/}boot0 ro"
