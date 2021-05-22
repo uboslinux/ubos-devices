@@ -3,12 +3,12 @@
 # From AUR
 
 releasepage=('https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=rpi-eeprom')
-pkgverforked=('2020.07.16-2')
+pkgverforked=('2020.09.03-1')
 
 pkgname=rpi-eeprom
-pkgver=2020.07.31
+pkgver=2020.09.03
 _pkghash=138a1
-pkgrel=3
+pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('armv7h' 'aarch64')
 url='http://github.com/raspberrypi/rpi-eeprom'
@@ -28,7 +28,7 @@ optdepends=(
 backup=('etc/default/rpi-eeprom-update')
 source=("rpi-eeprom-${pkgver}-${_pkghash}.tar.gz::https://github.com/raspberrypi/rpi-eeprom/archive/v${pkgver}-${_pkghash}.tar.gz"
         'rpi-eeprom-update.patch')
-sha512sums=('ac730b85d4aadf144443dd4f614b4c3acb6fd793f00ba75dd050f4aa118d1ee42b3d81ddefc41b0b2bd23a01f1849f6ab1b1b52bee6083d8a6c674707b332c5e'
+sha512sums=('3f20b07bc5d243baf6db6393c0e41e303b2b14a5fbd49bc07c142c2d3f79ef8cf79d53f711a0f17fb9c48566186cea09bf61ce41a37a13c072d0e6c66a2fd48e'
             '731b3f92863ebe80f9f489e28121721bb8f3bd7b1116a409251d629e59be39bd14f1c51c0a6409fa39e22c06b96640390b316e3a14cf3805c8f58b80644dc910')
 options=(!strip)
 
